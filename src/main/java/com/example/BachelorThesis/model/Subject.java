@@ -2,20 +2,22 @@ package com.example.BachelorThesis.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Subject {
     @Id
     private Long id;
     private String title;
-    private Long professorId;
+    @ManyToOne
+    private Professor professor;
+
 
     public Subject() { }
 
-    public Subject(Long id, String title, Long professorId) {
+    public Subject(Long id, String title) {
         this.id = id;
         this.title = title;
-        this.professorId = professorId;
     }
 
     public Long getId() {
@@ -34,11 +36,4 @@ public class Subject {
         this.title = title;
     }
 
-    public Long getProfessorId() {
-        return professorId;
-    }
-
-    public void setProfessorId(Long professorId) {
-        this.professorId = professorId;
-    }
 }

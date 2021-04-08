@@ -2,13 +2,15 @@ package com.example.BachelorThesis.model;
 
 import com.example.BachelorThesis.enumeration.StudentStatus;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 @DiscriminatorValue("STUDENT")
 public class Student extends User{
+    @Column(name = "allow_to_apply")
     private Boolean allowToApply;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private StudentStatus status;
 
     public Student() {}
