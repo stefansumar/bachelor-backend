@@ -17,6 +17,7 @@ import static javax.persistence.InheritanceType.SINGLE_TABLE;
 @DiscriminatorColumn(name = "role", discriminatorType = STRING)
 public class User implements UserDetails {
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "email")

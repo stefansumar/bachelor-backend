@@ -1,19 +1,33 @@
 package com.example.BachelorThesis.model;
 
 import com.example.BachelorThesis.enumeration.ThesisStatus;
+import com.sun.istack.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Thesis {
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @Column(name = "title")
     private String title;
+    @NotNull
+    @Column(name = "content")
     private String content;
+    @NotNull
+    @Column(name = "subject_id")
     private Long subjectId;
+    @NotNull
+    @Column(name = "student_id")
     private Long studentId;
+    @NotNull
+    @Column(name = "professor_id")
     private Long professorId;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private ThesisStatus status;
 
     public Thesis() {}

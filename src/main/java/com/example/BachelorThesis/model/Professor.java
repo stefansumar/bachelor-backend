@@ -1,5 +1,6 @@
 package com.example.BachelorThesis.model;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -8,6 +9,7 @@ import java.util.Set;
 @Entity
 @DiscriminatorValue("PROFESSOR")
 public class Professor extends User{
+    @Column(name = "bio")
     private String bio;
     @OneToMany(mappedBy = "professor")
     private Set<Subject> subjects;

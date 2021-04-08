@@ -11,7 +11,6 @@ public class Authority implements GrantedAuthority{
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(name = "name")
     @NonNull
     private String name;

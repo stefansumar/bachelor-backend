@@ -64,3 +64,21 @@ INSERT INTO user_authority (user_id, authority_id) VALUES (11, 2);
 INSERT INTO user_authority (user_id, authority_id) VALUES (12, 2);
 INSERT INTO user_authority (user_id, authority_id) VALUES (13, 2);
 INSERT INTO user_authority (user_id, authority_id) VALUES (14, 2);
+
+-- Subjects
+INSERT INTO subject (title, professor_id) VALUES ('Racunarska grafika', 1);
+INSERT INTO subject (title, professor_id) VALUES ('Interakcija covek racunar', 1);
+INSERT INTO subject (title, professor_id) VALUES ('Osnove racunarske inteligencije', 1);
+INSERT INTO subject (title, professor_id) VALUES ('Soft kompjuting', 1);
+INSERT INTO subject (title, professor_id) VALUES ('Baze podataka 1', 2);
+INSERT INTO subject (title, professor_id) VALUES ('Baze podataka 2', 2);
+INSERT INTO subject (title, professor_id) VALUES ('Internet softverske arhitekture', 2);
+INSERT INTO subject (title, professor_id) VALUES ('XML i Web servisi', 2);
+INSERT INTO subject (title, professor_id) VALUES ('Poslovna informatika', 3);
+INSERT INTO subject (title, professor_id) VALUES ('Bezbednost u sistemima elektronskog poslovanja', 3);
+INSERT INTO subject (title, professor_id) VALUES ('Web programiranje', 3);
+INSERT INTO subject (title, professor_id) VALUES ('Programski prevodioci', 3);
+INSERT INTO subject (title, professor_id) VALUES ('Internet mreze', 4);
+INSERT INTO subject (title, professor_id) VALUES ('Metode optimizacije', 4);
+INSERT INTO subject (title, professor_id) VALUES ('Osnove informacionih sistema i softverskog inzenjerstva', 4);
+INSERT INTO subject (title, professor_id) VALUES ('Specifikacija i modelovanje softvera', 4);
