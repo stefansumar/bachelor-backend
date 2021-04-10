@@ -29,6 +29,15 @@ public class ThesisServiceImpl implements ThesisService {
     }
 
     @Override
+    public void acceptThesis(Long thesisId, Long professorId) throws Exception {
+        Thesis thesis = this.thesisRepository.getOne(thesisId);
+        if(thesis.getProfessorId() != professorId)
+            throw new Exception("Professor is not allowed to reject thesis.");
+        thesis.setStatus(ThesisStatus.ACCEPTED);
+        this.thesisRepository.save(thesis);
+    }
+
+    @Override
     public void correctThesis(Long thesisId, Long professorId, CorrectionReq correctionReq) throws Exception {
         Thesis thesis = this.thesisRepository.getOne(thesisId);
         if(thesis.getProfessorId() != professorId)
@@ -62,4 +71,5 @@ public class ThesisServiceImpl implements ThesisService {
           ) return false;
         else return true;
     }
+
 }
