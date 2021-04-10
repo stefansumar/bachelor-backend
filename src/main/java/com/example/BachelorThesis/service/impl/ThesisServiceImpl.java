@@ -1,5 +1,6 @@
 package com.example.BachelorThesis.service.impl;
 
+import com.example.BachelorThesis.dto.RejectThesis;
 import com.example.BachelorThesis.dto.ThesisReq;
 import com.example.BachelorThesis.enumeration.ThesisStatus;
 import com.example.BachelorThesis.model.Thesis;
@@ -23,8 +24,17 @@ public class ThesisServiceImpl implements ThesisService {
         thesis.setStudentId(thesisReq.getStudentId());
         thesis.setProfessorId(thesisReq.getProfessorId());
         thesis.setStatus(ThesisStatus.WAITING_FOR_REVIEW);
+        return this.thesisRepository.save(thesis).getId();
+    }
 
-        return thesisRepository.save(thesis).getId();
+    @Override
+    public void rejectThesis(Long thesisId, Long professorId, RejectThesis rejectThesis) throws Exception {
+       Thesis thesis = this.thesisRepository.getOne(thesisId);
+       if(thesis.getProfessorId() != professorId)
+           throw new Exception("Professor is not allowed to reject thesis.");
+       thesis.setStatus(ThesisStatus.REJECTED);
+       thesis.setRejectReason(rejectThesis.getRejectReason());
+       this.thesisRepository.save(thesis);
     }
 
     @Override
