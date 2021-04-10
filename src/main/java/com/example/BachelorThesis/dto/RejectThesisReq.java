@@ -1,11 +1,11 @@
 package com.example.BachelorThesis.dto;
 
-public class RejectThesis {
+public class RejectThesisReq {
     private String rejectReason;
 
-    public RejectThesis() {}
+    public RejectThesisReq() {}
 
-    public RejectThesis(String rejectReason) {
+    public RejectThesisReq(String rejectReason) {
         this.rejectReason = rejectReason;
     }
 

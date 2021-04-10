@@ -4,6 +4,8 @@ import com.example.BachelorThesis.model.User;
 import com.example.BachelorThesis.repository.UserRepository;
 import com.example.BachelorThesis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +35,13 @@ public class UserServiceImpl implements UserService {
     public List<User> findAll() {
         List<User> result = userRepository.findAll();
         return result;
+    }
+
+    @Override
+    public Long getProfessorId() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String professorUsername = userDetails.getUsername();
+        User user = this.findByUsername(professorUsername);
+        return user.getId();
     }
 }
