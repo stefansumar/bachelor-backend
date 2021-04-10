@@ -34,6 +34,14 @@ public class ThesisController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @RequestMapping(method = RequestMethod.PUT, value = "/{thesisId}/accept")
+    @PreAuthorize("hasRole('PROFESSOR')")
+    public ResponseEntity<?> acceptThesis(@PathVariable Long thesisId) throws Exception{
+        Long professorId = this.userService.getProfessorId();
+        this.thesisService.acceptThesis(thesisId, professorId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @RequestMapping(method = RequestMethod.PUT, value = "/{thesisId}/correction")
     @PreAuthorize("hasRole('PROFESSOR')")
     public ResponseEntity<?> correctThesis(@PathVariable Long thesisId, @RequestBody CorrectionReq correctionReq) throws Exception{
