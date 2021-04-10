@@ -82,3 +82,5 @@ INSERT INTO subject (title, professor_id) VALUES ('Internet mreze', 4);
 INSERT INTO subject (title, professor_id) VALUES ('Metode optimizacije', 4);
 INSERT INTO subject (title, professor_id) VALUES ('Osnove informacionih sistema i softverskog inzenjerstva', 4);
 INSERT INTO subject (title, professor_id) VALUES ('Specifikacija i modelovanje softvera', 4);
+
+insert into thesis(title, content, subject_id, student_id, professor_id, status) values ('naslov', 'sadrzaj', '1', '12', '1', 'WAITING_FOR_REVIEW');

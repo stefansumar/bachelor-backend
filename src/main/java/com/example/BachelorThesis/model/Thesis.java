@@ -31,6 +31,8 @@ public class Thesis {
     private ThesisStatus status;
     @Column(name = "reject_reason")
     private String rejectReason;
+    @Column(name = "correction")
+    private String correction;
 
     public Thesis() {}
 
@@ -103,4 +105,8 @@ public class Thesis {
     public String getRejectReason() { return rejectReason; }
 
     public void setRejectReason(String rejectReason) { this.rejectReason = rejectReason; }
+
+    public String getCorrection() { return correction; }
+
+    public void setCorrection(String correction) { this.correction = correction; }
 }

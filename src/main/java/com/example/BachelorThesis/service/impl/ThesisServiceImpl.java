@@ -1,6 +1,7 @@
 package com.example.BachelorThesis.service.impl;
 
-import com.example.BachelorThesis.dto.RejectThesis;
+import com.example.BachelorThesis.dto.CorrectionReq;
+import com.example.BachelorThesis.dto.RejectThesisReq;
 import com.example.BachelorThesis.dto.ThesisReq;
 import com.example.BachelorThesis.enumeration.ThesisStatus;
 import com.example.BachelorThesis.model.Thesis;
@@ -28,12 +29,22 @@ public class ThesisServiceImpl implements ThesisService {
     }
 
     @Override
-    public void rejectThesis(Long thesisId, Long professorId, RejectThesis rejectThesis) throws Exception {
+    public void correctThesis(Long thesisId, Long professorId, CorrectionReq correctionReq) throws Exception {
+        Thesis thesis = this.thesisRepository.getOne(thesisId);
+        if(thesis.getProfessorId() != professorId)
+            throw new Exception("Professor is not allowed to reject thesis.");
+        thesis.setStatus(ThesisStatus.ON_CORRECTION);
+        thesis.setCorrection(correctionReq.getCorrection());
+        this.thesisRepository.save(thesis);
+    }
+
+    @Override
+    public void rejectThesis(Long thesisId, Long professorId, RejectThesisReq rejectThesisReq) throws Exception {
        Thesis thesis = this.thesisRepository.getOne(thesisId);
        if(thesis.getProfessorId() != professorId)
            throw new Exception("Professor is not allowed to reject thesis.");
        thesis.setStatus(ThesisStatus.REJECTED);
-       thesis.setRejectReason(rejectThesis.getRejectReason());
+       thesis.setRejectReason(rejectThesisReq.getRejectReason());
        this.thesisRepository.save(thesis);
     }
 
