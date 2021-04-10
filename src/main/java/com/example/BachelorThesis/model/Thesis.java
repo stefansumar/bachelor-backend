@@ -29,6 +29,8 @@ public class Thesis {
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private ThesisStatus status;
+    @Column(name = "reject_reason")
+    private String rejectReason;
 
     public Thesis() {}
 
@@ -97,4 +99,8 @@ public class Thesis {
     public void setStatus(ThesisStatus status) {
         this.status = status;
     }
+
+    public String getRejectReason() { return rejectReason; }
+
+    public void setRejectReason(String rejectReason) { this.rejectReason = rejectReason; }
 }
