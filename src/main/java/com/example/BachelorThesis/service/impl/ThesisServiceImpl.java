@@ -9,6 +9,10 @@ import com.example.BachelorThesis.repository.ThesisRepository;
 import com.example.BachelorThesis.service.ThesisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
 
 @Service
 public class ThesisServiceImpl implements ThesisService {
@@ -55,6 +59,12 @@ public class ThesisServiceImpl implements ThesisService {
        thesis.setStatus(ThesisStatus.REJECTED);
        thesis.setRejectReason(rejectThesisReq.getRejectReason());
        this.thesisRepository.save(thesis);
+    }
+
+    @Override
+    public void uploadFile(MultipartFile file) throws IOException {
+        //TODO: Change absolute path to relative path
+        file.transferTo(new File("C:\\Users\\2\\Desktop\\diblomzgi\\BachelorThesis\\BachelorThesis\\src\\main\\resources\\files\\" + file.getOriginalFilename()));
     }
 
     @Override
