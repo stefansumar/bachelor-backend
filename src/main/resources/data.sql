@@ -2,17 +2,37 @@
 -- Password for all Ussers: password
 INSERT INTO users
     (role, email, username, password, first_name, last_name, bio, allow_to_apply, status) VALUES
-    ('PROFESSOR', 'petarpetrovic@mail.com', 'petar.petrovic','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'Petar', 'Petrovic', 'Bio',null, null);
+    ('PROFESSOR', 'lukovic@mail.com', 'ivan.lukovic','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'dr Ivan', 'Luković', 'Bio',null, null);
 INSERT INTO users
     (role, email, username, password, first_name, last_name, bio, allow_to_apply, status) VALUES
-    ('PROFESSOR', 'milanmilanovic@mail.com', 'milan.milanovic','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'Milan', 'Milanovic', 'Bio',null, null);
+    ('PROFESSOR', 'perisic@mail.com', 'branko.perisic','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'dr Branko', 'Perišić', 'Bio',null, null);
 INSERT INTO users
     (role, email, username, password, first_name, last_name, bio, allow_to_apply, status) VALUES
-    ('PROFESSOR', 'jovanjovanovic@mail.com', 'jovan.jovanovic','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'Jovan', 'Jovanovic', 'Bio',null, null);
+    ('PROFESSOR', 'kovacevic@mail.com', 'aleksandar.kovacevic','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'dr Aleksandar', 'Kovačević', 'Bio',null, null);
 INSERT INTO users
     (role, email, username, password, first_name, last_name, bio, allow_to_apply, status) VALUES
-    ('PROFESSOR', 'stefanstefanovic@mail.com','stefan.stefanovic','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'Stefan', 'Stefanovic', 'Bio',null, null);
-
+    ('PROFESSOR', 'suvajdzin.rakic@mail.com','zorica.suvajdzin','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'dr Zorica', 'Suvajdžin Rakić', 'Bio',null, null);
+INSERT INTO users
+    (role, email, username, password, first_name, last_name, bio, allow_to_apply, status) VALUES
+    ('PROFESSOR', 'vidakovic@mail.com','milan.vidakovic','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'dr Milan', 'Vidaković', 'Bio',null, null);
+INSERT INTO users
+    (role, email, username, password, first_name, last_name, bio, allow_to_apply, status) VALUES
+    ('PROFESSOR', 'ivetic@mail.com','dragan.ivetic','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'dr Dragan', 'Ivetić', 'Bio',null, null);
+INSERT INTO users
+    (role, email, username, password, first_name, last_name, bio, allow_to_apply, status) VALUES
+    ('PROFESSOR', 'milosavljevic@mail.com','branko.milosavljevic','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'dr Branko', 'Milosavljević', 'Bio',null, null);
+INSERT INTO users
+    (role, email, username, password, first_name, last_name, bio, allow_to_apply, status) VALUES
+    ('PROFESSOR', 'sladic@mail.com','goran.sladic','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'dr Goran', 'Sladić', 'Bio',null, null);
+INSERT INTO users
+    (role, email, username, password, first_name, last_name, bio, allow_to_apply, status) VALUES
+    ('PROFESSOR', 'slivka@mail.com','jelena.slivka','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'dr Jelena', 'Slivka', 'Bio',null, null);
+INSERT INTO users
+    (role, email, username, password, first_name, last_name, bio, allow_to_apply, status) VALUES
+    ('PROFESSOR', 'zaric@mail.com','miroslav.zaric','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'dr Miroslav', 'Zarić', 'Bio',null, null);
+INSERT INTO users
+    (role, email, username, password, first_name, last_name, bio, allow_to_apply, status) VALUES
+    ('PROFESSOR', 'milosavljevicg@mail.com','gordana.milosavljevic','$2y$10$zgqjTKeV9ZdfkPHjPwJNGutegVSopA1dPIhGJeNgG9srnyQVEDkj.', 'dr Gordana', 'Milosavljević', 'Bio',null, null);
 -- Students
 INSERT INTO users
     (role, email, username, password, first_name, last_name, bio, allow_to_apply, status) VALUES
@@ -54,33 +74,37 @@ INSERT INTO user_authority (user_id, authority_id) VALUES (1, 1);
 INSERT INTO user_authority (user_id, authority_id) VALUES (2, 1);
 INSERT INTO user_authority (user_id, authority_id) VALUES (3, 1);
 INSERT INTO user_authority (user_id, authority_id) VALUES (4, 1);
-INSERT INTO user_authority (user_id, authority_id) VALUES (5, 2);
-INSERT INTO user_authority (user_id, authority_id) VALUES (6, 2);
-INSERT INTO user_authority (user_id, authority_id) VALUES (7, 2);
-INSERT INTO user_authority (user_id, authority_id) VALUES (8, 2);
-INSERT INTO user_authority (user_id, authority_id) VALUES (9, 2);
-INSERT INTO user_authority (user_id, authority_id) VALUES (10, 2);
-INSERT INTO user_authority (user_id, authority_id) VALUES (11, 2);
+INSERT INTO user_authority (user_id, authority_id) VALUES (5, 1);
+INSERT INTO user_authority (user_id, authority_id) VALUES (6, 1);
+INSERT INTO user_authority (user_id, authority_id) VALUES (7, 1);
+INSERT INTO user_authority (user_id, authority_id) VALUES (8, 1);
+INSERT INTO user_authority (user_id, authority_id) VALUES (9, 1);
+INSERT INTO user_authority (user_id, authority_id) VALUES (10, 1);
+INSERT INTO user_authority (user_id, authority_id) VALUES (11, 1);
 INSERT INTO user_authority (user_id, authority_id) VALUES (12, 2);
 INSERT INTO user_authority (user_id, authority_id) VALUES (13, 2);
 INSERT INTO user_authority (user_id, authority_id) VALUES (14, 2);
+INSERT INTO user_authority (user_id, authority_id) VALUES (15, 2);
+INSERT INTO user_authority (user_id, authority_id) VALUES (16, 2);
+INSERT INTO user_authority (user_id, authority_id) VALUES (17, 2);
+INSERT INTO user_authority (user_id, authority_id) VALUES (18, 2);
+INSERT INTO user_authority (user_id, authority_id) VALUES (19, 2);
+INSERT INTO user_authority (user_id, authority_id) VALUES (20, 2);
+INSERT INTO user_authority (user_id, authority_id) VALUES (21, 2);
 
 -- Subjects
-INSERT INTO subject (title, professor_id) VALUES ('Racunarska grafika', 1);
-INSERT INTO subject (title, professor_id) VALUES ('Interakcija covek racunar', 1);
-INSERT INTO subject (title, professor_id) VALUES ('Osnove racunarske inteligencije', 1);
-INSERT INTO subject (title, professor_id) VALUES ('Soft kompjuting', 1);
-INSERT INTO subject (title, professor_id) VALUES ('Baze podataka 1', 2);
-INSERT INTO subject (title, professor_id) VALUES ('Baze podataka 2', 2);
-INSERT INTO subject (title, professor_id) VALUES ('Internet softverske arhitekture', 2);
-INSERT INTO subject (title, professor_id) VALUES ('XML i Web servisi', 2);
-INSERT INTO subject (title, professor_id) VALUES ('Poslovna informatika', 3);
-INSERT INTO subject (title, professor_id) VALUES ('Bezbednost u sistemima elektronskog poslovanja', 3);
-INSERT INTO subject (title, professor_id) VALUES ('Web programiranje', 3);
-INSERT INTO subject (title, professor_id) VALUES ('Programski prevodioci', 3);
-INSERT INTO subject (title, professor_id) VALUES ('Internet mreze', 4);
-INSERT INTO subject (title, professor_id) VALUES ('Metode optimizacije', 4);
-INSERT INTO subject (title, professor_id) VALUES ('Osnove informacionih sistema i softverskog inzenjerstva', 4);
-INSERT INTO subject (title, professor_id) VALUES ('Specifikacija i modelovanje softvera', 4);
-
-insert into thesis(title, content, subject_id, student_id, professor_id, status) values ('naslov', 'sadrzaj', '1', '12', '1', 'WAITING_FOR_REVIEW');
+INSERT INTO subject (title, professor_id) VALUES ('Baze podataka 1', 1);
+INSERT INTO subject (title, professor_id) VALUES ('Numerički algoritmi i numerički softver', 3);
+INSERT INTO subject (title, professor_id) VALUES ('Programski prevodioci', 4);
+INSERT INTO subject (title, professor_id) VALUES ('Osnovi računarske inteligencije', 3);
+INSERT INTO subject (title, professor_id) VALUES ('Interakcija čovek računar', 6);
+INSERT INTO subject (title, professor_id) VALUES ('Internet mreže', 7);
+INSERT INTO subject (title, professor_id) VALUES ('Specifikacija i modeliranje softvera', 2);
+INSERT INTO subject (title, professor_id) VALUES ('Veb programiranje', 5);
+INSERT INTO subject (title, professor_id) VALUES ('Projektovanje softvera', 8);
+INSERT INTO subject (title, professor_id) VALUES ('Soft kompjuting', 9);
+INSERT INTO subject (title, professor_id) VALUES ('Računarska grafika', 6);
+INSERT INTO subject (title, professor_id) VALUES ('Baze podataka 2', 1);
+INSERT INTO subject (title, professor_id) VALUES ('Internet softverske arhitekture', 7);
+INSERT INTO subject (title, professor_id) VALUES ('XML i veb servisi', 10);
+INSERT INTO subject (title, professor_id) VALUES ('Poslovna informatika', 11);

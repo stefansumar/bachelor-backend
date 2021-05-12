@@ -1,8 +1,6 @@
 package com.example.BachelorThesis.service.impl;
 
-import com.example.BachelorThesis.dto.CorrectionReq;
-import com.example.BachelorThesis.dto.RejectThesisReq;
-import com.example.BachelorThesis.dto.ThesisReq;
+import com.example.BachelorThesis.dto.*;
 import com.example.BachelorThesis.enumeration.ThesisStatus;
 import com.example.BachelorThesis.model.Thesis;
 import com.example.BachelorThesis.repository.ThesisRepository;
@@ -13,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class ThesisServiceImpl implements ThesisService {
@@ -33,12 +32,23 @@ public class ThesisServiceImpl implements ThesisService {
     }
 
     @Override
+    public void editThesis(Long id, EditThesisReq editThesisReq) {
+        Thesis thesis = this.thesisRepository.getOne(id);
+        thesis.setTitle(editThesisReq.getThesisEdit());
+        thesis.setContent(editThesisReq.getContentEdit());
+        thesis.setStatus(ThesisStatus.WAITING_FOR_REVIEW);
+        this.thesisRepository.save(thesis);
+        this.thesisRepository.flush();
+    }
+
+    @Override
     public void acceptThesis(Long thesisId, Long professorId) throws Exception {
         Thesis thesis = this.thesisRepository.getOne(thesisId);
         if(thesis.getProfessorId() != professorId)
             throw new Exception("Professor is not allowed to reject thesis.");
         thesis.setStatus(ThesisStatus.ACCEPTED);
         this.thesisRepository.save(thesis);
+        this.thesisRepository.flush();
     }
 
     @Override
@@ -49,6 +59,7 @@ public class ThesisServiceImpl implements ThesisService {
         thesis.setStatus(ThesisStatus.ON_CORRECTION);
         thesis.setCorrection(correctionReq.getCorrection());
         this.thesisRepository.save(thesis);
+        this.thesisRepository.flush();
     }
 
     @Override
@@ -59,6 +70,7 @@ public class ThesisServiceImpl implements ThesisService {
        thesis.setStatus(ThesisStatus.REJECTED);
        thesis.setRejectReason(rejectThesisReq.getRejectReason());
        this.thesisRepository.save(thesis);
+       this.thesisRepository.flush();
     }
 
     @Override
@@ -80,6 +92,29 @@ public class ThesisServiceImpl implements ThesisService {
            professorId == null
           ) return false;
         else return true;
+    }
+
+    @Override
+    public Boolean validateEditReq(EditThesisReq editThesisReq) {
+        String title = editThesisReq.getThesisEdit();
+        String content = editThesisReq.getContentEdit();
+
+        if(title.isEmpty() || content.isEmpty())
+            return false;
+        else
+            return true;
+    }
+
+    @Override
+    public List<StudentsThesisRes> allByStudent(Long studentId) {
+
+        return this.thesisRepository.allByStudent(studentId);
+    }
+
+    @Override
+    public List<ProfessorsThesisRes> allByProfessor(Long professorId) {
+
+        return this.thesisRepository.allByProfessor(professorId);
     }
 
 }

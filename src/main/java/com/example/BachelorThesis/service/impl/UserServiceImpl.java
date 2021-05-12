@@ -1,5 +1,6 @@
 package com.example.BachelorThesis.service.impl;
 
+import com.example.BachelorThesis.dto.ProfessorRes;
 import com.example.BachelorThesis.model.User;
 import com.example.BachelorThesis.repository.UserRepository;
 import com.example.BachelorThesis.service.UserService;
@@ -43,5 +44,10 @@ public class UserServiceImpl implements UserService {
         String professorUsername = userDetails.getUsername();
         User user = this.findByUsername(professorUsername);
         return user.getId();
+    }
+
+    @Override
+    public List<ProfessorRes> findAllProfessors() {
+        return this.userRepository.getAllProfessors();
     }
 }

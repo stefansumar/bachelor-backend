@@ -1,9 +1,6 @@
 package com.example.BachelorThesis.model;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -11,7 +8,8 @@ import java.util.Set;
 public class Professor extends User{
     @Column(name = "bio")
     private String bio;
-    @OneToMany(mappedBy = "professor")
+    @OneToMany(targetEntity = Subject.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "professor_id", referencedColumnName = "id")
     private Set<Subject> subjects;
 
     public Professor() { }

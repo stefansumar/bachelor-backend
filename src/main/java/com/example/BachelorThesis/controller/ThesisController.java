@@ -1,12 +1,14 @@
 package com.example.BachelorThesis.controller;
 
 import com.example.BachelorThesis.dto.CorrectionReq;
+import com.example.BachelorThesis.dto.EditThesisReq;
 import com.example.BachelorThesis.dto.RejectThesisReq;
 import com.example.BachelorThesis.dto.ThesisReq;
 import com.example.BachelorThesis.service.ThesisService;
 import com.example.BachelorThesis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +29,7 @@ public class ThesisController {
 
     public static String uploadDirectory = System.getProperty("user.dir")+"/uploads";
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasRole('STUDENT')")
     public ResponseEntity<?> createThesis(@RequestBody ThesisReq thesisReq) throws AccessDeniedException, ParseException {
 
@@ -36,6 +38,16 @@ public class ThesisController {
 
         this.thesisService.createThesis(thesisReq);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, value = "/{thesisId}")
+    @PreAuthorize("hasRole('STUDENT')")
+    public ResponseEntity<?> editThesis(@RequestBody EditThesisReq editThesisReq, @PathVariable Long thesisId) {
+        if(!thesisService.validateEditReq(editThesisReq))
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+        this.thesisService.editThesis(thesisId, editThesisReq);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{thesisId}/accept")
@@ -66,6 +78,20 @@ public class ThesisController {
     public ResponseEntity<?> uploadFiles(@RequestParam("file") MultipartFile file) throws IOException {
         this.thesisService.uploadFile(file);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/{studentId}")
+    @PreAuthorize("hasRole('STUDENT')")
+    public ResponseEntity<?> allByStudent(@PathVariable Long studentId){
+
+        return new ResponseEntity<>(this.thesisService.allByStudent(studentId), HttpStatus.OK);
+    }
+
+    @GetMapping("/all/{professorId}")
+    @PreAuthorize("hasRole('PROFESSOR')")
+    public ResponseEntity<?> allByProfessor(@PathVariable Long professorId){
+
+        return new ResponseEntity<>(this.thesisService.allByProfessor(professorId), HttpStatus.OK);
     }
 
 }
